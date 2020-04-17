@@ -1,5 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -7,6 +8,7 @@ import { NavComponent } from "./nav/nav/nav.component";
 import { EmployeeComponent } from "./employee/employee/employee.component";
 import { DepartmentComponent } from "./department/department/department.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { HttpClientModule } from "@angular/common/http";
 
 // matrial imports
 import { MatSliderModule } from "@angular/material/slider";
@@ -43,6 +45,8 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatTreeModule } from "@angular/material/tree";
+import { EmployeeService } from "./services/employee.service";
+import { FormsComponent } from "./test/forms/forms.component";
 
 @NgModule({
   declarations: [
@@ -50,10 +54,14 @@ import { MatTreeModule } from "@angular/material/tree";
     NavComponent,
     EmployeeComponent,
     DepartmentComponent,
+    FormsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatBadgeModule,
@@ -91,7 +99,7 @@ import { MatTreeModule } from "@angular/material/tree";
     MatTooltipModule,
     MatTreeModule,
   ],
-  providers: [],
+  providers: [EmployeeService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

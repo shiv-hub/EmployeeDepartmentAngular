@@ -1,1 +1,25 @@
-<p>department works!</p>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Id Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>ID</th>
+    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="deptName">
+    <th mat-header-cell *matHeaderCellDef>Department Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.deptName }}</td>
+  </ng-container>
+
+  <!-- No. of Employees Column -->
+  <ng-container matColumnDef="noe">
+    <th mat-header-cell *matHeaderCellDef>No. of Emploees</th>
+    <td mat-cell *matCellDef="let element">{{ element.noe }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
