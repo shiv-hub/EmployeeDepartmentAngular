@@ -47,6 +47,7 @@ import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatTreeModule } from "@angular/material/tree";
 import { EmployeeService } from "./services/employee.service";
 import { FormsComponent } from "./test/forms/forms.component";
+import { EmployeedataComponent } from './employeedata/employeedata.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { FormsComponent } from "./test/forms/forms.component";
     EmployeeComponent,
     DepartmentComponent,
     FormsComponent,
+    EmployeedataComponent,
   ],
   imports: [
     BrowserModule,

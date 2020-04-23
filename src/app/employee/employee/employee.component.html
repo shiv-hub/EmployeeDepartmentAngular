@@ -1,3 +1,21 @@
+<mat-card>
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <span>Employees</span>
+      <span class="example-spacer"></span>
+      <a [routerLink]="['/addEmployee']" title="Add Employee">
+        <mat-icon
+          class="example-icon"
+          aria-hidden="false"
+          aria-label="Example delete icon"
+          >add</mat-icon
+        >
+      </a>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</mat-card>
+
+<!-- table start -->
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
@@ -36,6 +54,32 @@
   <ng-container matColumnDef="department">
     <th mat-header-cell *matHeaderCellDef>Department</th>
     <td mat-cell *matCellDef="let element">{{ element.department }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Actions">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">
+      <a title="Delete record" href="#" (click)="deleteEmployee(element.id)">
+        <mat-icon
+          class="example-icon"
+          aria-hidden="false"
+          aria-label="Example delete icon"
+          >delete</mat-icon
+        >
+      </a>
+      <a
+        title="Update record"
+        href="#"
+        [routerLink]="['updateEmployee', element.id]"
+      >
+        <mat-icon
+          class="example-icon"
+          aria-hidden="false"
+          aria-label="Example delete icon"
+          >edit</mat-icon
+        >
+      </a>
+    </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

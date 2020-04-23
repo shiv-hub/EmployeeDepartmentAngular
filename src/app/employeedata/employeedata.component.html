@@ -1,0 +1,82 @@
+<mat-card>
+  <form class="example-form">
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td colspan="2">
+          <mat-form-field class="example-full-width">
+            <mat-label>ID</mat-label>
+            <input name="id" type="number" [(ngModel)]="employee.id" matInput />
+          </mat-form-field>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2">
+          <mat-form-field class="example-full-width">
+            <mat-label>Age</mat-label>
+            <input
+              name="age"
+              type="number"
+              [(ngModel)]="employee.age"
+              matInput
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>First name</mat-label>
+            <input name="firstName" [(ngModel)]="employee.firstName" matInput />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Last Name </mat-label>
+            <input name="lastName" [(ngModel)]="employee.lastName" matInput />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <mat-form-field>
+            <mat-label>Choose a date</mat-label>
+            <input
+              name="hireDate"
+              [(ngModel)]="employee.hireDate"
+              matInput
+              [matDatepicker]="picker"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <mat-form-field>
+            <mat-label>Select Department</mat-label>
+            <mat-select [(value)]="employee.department">
+              <mat-option
+                *ngFor="let department of departments"
+                [value]="department"
+              >
+                {{ department }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button mat-button (click)="saveEmployee()">Create</button>
+          <button mat-button (click)="back()">Cancel</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</mat-card>

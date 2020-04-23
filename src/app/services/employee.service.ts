@@ -53,4 +53,18 @@ export class EmployeeService {
       params,
     });
   }
+
+  addEmployee(employee): Observable<Employee> {
+    // let params = new HttpParams().set("employee", employee);
+    return this._http.post<Employee>(this._ROOT_URL, employee);
+  }
+
+  deleteEmployee(id): Observable<any> {
+    let params = new HttpParams().set("id", id);
+    return this._http.delete(this._ROOT_URL, { params, responseType: "text" });
+  }
+
+  getEmployeeById(id): Observable<Employee> {
+    return this._http.get<Employee>(this._ROOT_URL + "/" + id);
+  }
 }

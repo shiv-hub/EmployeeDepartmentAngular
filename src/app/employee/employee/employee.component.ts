@@ -4,6 +4,7 @@ import { EmployeeService } from "src/app/services/employee.service";
 import { NgForm } from "@angular/forms";
 import { from } from "rxjs";
 import * as moment from "moment";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-employee",
@@ -18,11 +19,15 @@ export class EmployeeComponent implements OnInit {
     "age",
     "hireDate",
     "department",
+    "Actions",
   ];
 
   // public studentdetails = [];
   dataSource: Employee[] = [];
-  constructor(private _employeeService: EmployeeService) {}
+  constructor(
+    private _employeeService: EmployeeService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this._employeeService
@@ -72,5 +77,12 @@ export class EmployeeComponent implements OnInit {
     this._employeeService
       .getEmployeeAfterDate(hireDate)
       .subscribe((data) => (this.dataSource = data));
+  }
+
+  deleteEmployee(id) {
+    let msg;
+    this._employeeService.deleteEmployee(id).subscribe((data) => (msg = data));
+    alert(msg);
+    this.router.navigate([""]);
   }
 }
